@@ -3,13 +3,13 @@ tag-template: 'v$RESOLVED_VERSION'
 version-resolver:
   major:
     labels:
-      - 'major'
+    - 'major'
   minor:
     labels:
-      - 'minor'
+    - 'minor'
   patch:
     labels:
-      - 'patch'
+    - 'patch'
   default: patch
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 template: |
