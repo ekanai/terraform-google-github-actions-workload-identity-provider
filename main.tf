@@ -15,7 +15,7 @@ resource "google_iam_workload_identity_pool" "main" {
   display_name              = var.workload_identity_display_name
 }
 
-resource "google_iam_workload_identity_pool_provider" "github" {
+resource "google_iam_workload_identity_pool_provider" "provider" {
   provider                           = google-beta
   project                            = var.google_project_id
   workload_identity_pool_id          = google_iam_workload_identity_pool.main.workload_identity_pool_id
@@ -36,7 +36,7 @@ resource "google_iam_workload_identity_pool_provider" "github" {
   }
 }
 
-resource "google_service_account_iam_binding" "role-sa-binding" {
+resource "google_service_account_iam_binding" "binding" {
   service_account_id = module.google_service_accounts.service_account.name
   role               = "roles/iam.workloadIdentityUser"
 
