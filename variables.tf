@@ -10,6 +10,17 @@ variable "service_account_name" {
   default     = "github"
 }
 
+variable "google_project_id_to_create_sa" {
+  type        = string
+  description = "Project ID where SA is created"
+}
+
+variable "google_project_ids_for_roles" {
+  type        = list(string)
+  description = "Project ID to which the role is granted"
+  default     = []
+}
+
 variable "roles_for_service_account" {
   type        = list(string)
   description = "Roles for service account without roles prefix"
@@ -38,16 +49,6 @@ variable "workload_identity_pool_provider_attribute_condition" {
   type        = string
   description = "Workload identity pool provider attribute condition"
   default     = ""
-}
-
-variable "google_project_id_to_create_sa" {
-  type        = string
-  description = "Project ID where SA is created"
-}
-
-variable "google_project_ids_for_roles" {
-  type        = list(string)
-  description = "Project ID to which the role is granted"
 }
 
 variable "github_owner" {
