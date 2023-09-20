@@ -23,7 +23,6 @@ resource "google_iam_workload_identity_pool" "main" {
 }
 
 resource "google_iam_workload_identity_pool_provider" "provider" {
-  provider                           = google-beta
   project                            = var.google_project_id_to_create_sa
   workload_identity_pool_id          = google_iam_workload_identity_pool.main.workload_identity_pool_id
   workload_identity_pool_provider_id = var.workload_identity_id
