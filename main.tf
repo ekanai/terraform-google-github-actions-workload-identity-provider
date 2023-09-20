@@ -2,22 +2,28 @@ module "google_service_accounts" {
   source  = "terraform-google-modules/service-accounts/google"
   version = "4.2.0"
 
-  project_id    = var.google_project_id
+  project_id    = var.google_project_id_to_create_sa
   prefix        = var.service_account_name_prefix
   names         = [var.service_account_name]
-  project_roles = formatlist("${var.google_project_id}=>roles/%s", var.roles_for_service_account)
+
+  project_roles = (
+    formatlist(
+      "${formatlist("%s=>roles/", var.google_project_id_for_roles)}%s",
+      var.roles_for_service_account,
+    )
+  )
 }
 
 resource "google_iam_workload_identity_pool" "main" {
   provider                  = google-beta
-  project                   = var.google_project_id
+  project                   = var.google_project_id_to_create_sa
   workload_identity_pool_id = var.workload_identity_id
   display_name              = var.workload_identity_display_name
 }
 
 resource "google_iam_workload_identity_pool_provider" "provider" {
   provider                           = google-beta
-  project                            = var.google_project_id
+  project                            = var.google_project_id_to_create_sa
   workload_identity_pool_id          = google_iam_workload_identity_pool.main.workload_identity_pool_id
   workload_identity_pool_provider_id = var.workload_identity_id
   display_name                       = var.workload_identity_display_name

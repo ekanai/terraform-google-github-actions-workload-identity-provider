@@ -40,14 +40,14 @@ variable "workload_identity_pool_provider_attribute_condition" {
   default     = ""
 }
 
-variable "google_project_id" {
+variable "google_project_id_to_create_sa" {
   type        = string
-  description = "Google project id"
+  description = "Project ID where SA is created"
 }
 
-variable "google_project_number" {
-  type        = number
-  description = "Google project number"
+variable "google_project_id_for_roles" {
+  type        = string
+  description = "Project ID to which the role is granted"
 }
 
 variable "github_owner" {
