@@ -8,7 +8,7 @@ module "google_service_accounts" {
 
   project_roles = (
     flatten([
-      for r in var.roles_for_service_account
+      for r in var.google_project_ids_for_roles
       : formatlist("%s=>roles/%s", r, var.roles_for_service_account)
     ])
   )
