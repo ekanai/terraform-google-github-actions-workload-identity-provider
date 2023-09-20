@@ -16,7 +16,6 @@ module "google_service_accounts" {
 }
 
 resource "google_iam_workload_identity_pool" "main" {
-  provider                  = google-beta
   project                   = var.google_project_id_to_create_sa
   workload_identity_pool_id = var.workload_identity_id
   display_name              = var.workload_identity_display_name
