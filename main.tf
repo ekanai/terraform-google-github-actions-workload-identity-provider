@@ -2,15 +2,15 @@ module "google_service_accounts" {
   source  = "terraform-google-modules/service-accounts/google"
   version = "4.2.0"
 
-  project_id    = var.google_project_id_to_create_sa
-  prefix        = var.service_account_name_prefix
-  names         = [var.service_account_name]
+  project_id = var.google_project_id_to_create_sa
+  prefix     = var.service_account_name_prefix
+  names      = [var.service_account_name]
 
   project_roles = (
-    formatlist(
-      "${formatlist("%s=>roles/", var.google_project_id_for_roles)}%s",
-      var.roles_for_service_account,
-    )
+    [
+      for t in "${formatlist("%s=>roles/", var.google_project_id_for_roles)}%s"
+      : formatlist(t, var.roles_for_service_account)
+    ]
   )
 }
 
