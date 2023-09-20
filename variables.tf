@@ -45,7 +45,7 @@ variable "google_project_id_to_create_sa" {
   description = "Project ID where SA is created"
 }
 
-variable "google_project_id_for_roles" {
+variable "google_project_ids_for_roles" {
   type        = list(string)
   description = "Project ID to which the role is granted"
 }

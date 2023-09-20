@@ -8,8 +8,8 @@ module "google_service_accounts" {
 
   project_roles = (
     [
-      for t in "${formatlist("%s=>roles/", var.google_project_id_for_roles)}%s"
-      : formatlist(t, var.roles_for_service_account)
+      for t in formatlist("%s=>roles", var.google_project_ids_for_roles)
+      : formatlist("${t}/%s", var.roles_for_service_account)
     ]
   )
 }
