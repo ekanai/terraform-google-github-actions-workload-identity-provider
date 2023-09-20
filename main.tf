@@ -7,6 +7,7 @@ module "google_service_accounts" {
   names      = [var.service_account_name]
 
   project_roles = (
+    var.roles_for_service_account == [] ? [] :
     flatten([
       for r in var.google_project_ids_for_roles
       : formatlist("%s=>roles/%s", r, var.roles_for_service_account)
