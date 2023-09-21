@@ -5,6 +5,5 @@
   ],
   "labels": [
     "renovate"
-  ],
-  "rebaseWhen": "never"
+  ]
 }
