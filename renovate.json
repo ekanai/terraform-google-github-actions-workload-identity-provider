@@ -1,9 +1,14 @@
 {
-  "automerge": true,
   "extends": [
     "config:base"
   ],
   "labels": [
     "renovate"
+  ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "automerge": false
+    }
   ]
 }
