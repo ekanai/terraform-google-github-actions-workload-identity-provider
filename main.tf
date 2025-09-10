@@ -1,6 +1,6 @@
 module "google_service_accounts" {
   source  = "terraform-google-modules/service-accounts/google"
-  version = "4.5.4"
+  version = "4.6.0"
 
   project_id = var.google_project_id_to_create_sa
   prefix     = var.service_account_name_prefix
